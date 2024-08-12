@@ -1,10 +1,16 @@
 name: Hello World
 
-on: 
-  workflow_dispatch:
+# mainブランチにpushした時に実行する
+on:
+  push:
+    branches:
+      - main
 
 jobs:
   say_hello:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Hello World!"
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: say helloworld
+        run: echo "Hello World!"
